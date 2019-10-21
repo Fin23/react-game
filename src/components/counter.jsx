@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import bran from '../images/bran.jpg';
-// import forest from '../images/childrenOfTheForest.jpg';
+import forest from '../images/childrenOfTheForest.jpg';
 // import danny from '../images/danny.jpg';
 // import drogon from '../images/drogon.jpg';
 // import eddard from '../images/eddard.jpg';
@@ -34,10 +34,15 @@ class Counter extends Component {
      console.log("Counter - Rendered");
         
         return (
+        
+
         <div>
             <h4>{this.props.id}</h4>
 
-        <img src={bran} alt=""/>
+       {/* <button>
+       <img src={bran} alt=""/>
+       </button> */}
+       
 
         <span style = {{fontSize: 30}}
          className={this.getBadgeClasses()}>{this.formatCount()}
