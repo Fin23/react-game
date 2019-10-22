@@ -1,9 +1,11 @@
   
 .header {
     width: 100%;
-    font-size: 2rem;
-    color: #2A77AE;
+    padding:20px;
+    font-size: 1.8rem;
+    color: rgb(190, 203, 212);
     margin-bottom: 10px;
+    background-color:#B43757;
   }
   
   .title {

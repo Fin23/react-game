@@ -52,10 +52,6 @@ constructor(){
 
 
 
-
-
-
-
 componentDidMount(){
   // ajax call
   console.log('App - Mounted');
@@ -63,11 +59,7 @@ componentDidMount(){
 
 
 
-
-
-
-
-
+// handle increment, handle reset and handle delete is for the number counter below the game that i was experimenting with
 handleIncrement = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter)
@@ -75,9 +67,6 @@ handleIncrement = counter => {
     counters[index].value++;
     this.setState({ counters });
 };
-
-
-
 
 
 
@@ -91,16 +80,12 @@ this.setState({ counters });
 
 
 
-
-
-
-
-
 handleDelete = (counterId) => {
 const counters = this.state.counters.filter(c => c.id !== counterId);
 this.setState({counters});
 
 };
+
 
 
 
@@ -114,9 +99,10 @@ gameOver = () => {
   this.state.cards.forEach(card => {
     card.count = 0;
   });
+
   alert(`Game Over :( \nscore: ${this.state.score}`);
-  this.setState({score: 0});
-  return true;
+    this.setState({score: 0});
+      return true;
 };
 
 
@@ -130,11 +116,14 @@ clickCount = id => {
     if (o.id === id) {
       if(cards[i].count === 0){
         cards[i].count = cards[i].count + 1;
-        this.setState({score : this.state.score + 1}, function(){
-          console.log(this.state.score);
+
+    this.setState({score : this.state.score + 1}, function(){
+      console.log(this.state.score);
         });
-        this.state.cards.sort(() => Math.random() - 0.5)
-        return true; 
+
+    this.state.cards.sort(() => Math.random() - 0.5)
+      return true; 
+
       } else {
         this.gameOver();
       }
@@ -145,48 +134,42 @@ clickCount = id => {
 
 
 
-  render() { 
+render() { 
 
-    console.log('App - Rendered');
+  console.log('App - Rendered');
     return ( 
       <React.Fragment>   
 
-
-
 <Wrapper>
-        <Header score={this.state.score} highscore={this.state.highscore}>GOT click Game, by Ross J.</Header>
-        {this.state.cards.map(card => (
-          <Card
-            clickCount={this.clickCount}
-            id={card.id}
-            key={card.id}
+  <Header score={this.state.score} highscore={this.state.highscore}>
+    GOT click Game, by Ross J.
+      </Header>
+
+  {this.state.cards.map(card => (
+    <Card
+      clickCount={this.clickCount}
+        id={card.id}
+          key={card.id}
             image={card.image}
-          />
+              />
         ))}
-      </Wrapper>
-      <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
-<main className="container">
-<Counters 
-counters={this.state.counters}
-onReset={this.handleReset}
-onIncrement={this.handleIncrement}
-onDelete={this.handleDelete}
-/>
+</Wrapper>
+
+
+<NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
+  <main className="container">
+    <Counters 
+      counters={this.state.counters}
+        onReset={this.handleReset}
+          onIncrement={this.handleIncrement}
+            onDelete={this.handleDelete}
+              />
 
 </main>
-
 </React.Fragment>
      );
   }
 }
-
-
-
-
-
-
-
-
 
 
  
